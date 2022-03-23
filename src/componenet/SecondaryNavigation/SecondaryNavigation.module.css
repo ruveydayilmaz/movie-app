@@ -1,0 +1,12 @@
+.secondaryNavigation {
+
+}
+
+.box {
+    display: flex;
+    align-items: center;
+}
+
+.navItem {
+    margin-left: 2rem;
+}
