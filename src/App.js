@@ -8,8 +8,8 @@ import Footer from './componenet/Footer';
 function App() {
   return (
     <div className="App">
-      <Navigation />
       <Billboard />
+      <Navigation />
       <Titles />
       <Footer />
     </div>

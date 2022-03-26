@@ -1,0 +1,20 @@
+.linksList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.link {
+    flex-basis: 25%;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+
+.link a {
+    text-decoration: none;
+    color: #808080;
+}

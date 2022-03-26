@@ -4,6 +4,12 @@
     height: 68px;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0 40px;
+    margin-left: 65px;
 }
 
 .mainNavigation {
@@ -19,16 +25,23 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    margin-left: 30px;
     display: flex;
     align-items: center;
 }
 
-.navigationItem {
+.navigationItem,
+.currentItem {
     margin-left: 1rem;
     font-size: 0.8rem;
 }
+.currentItem {
+    color: white;
+    font-weight: bold;
+}
 
-.navigationItem a {
+.navigationItem a,
+.currentItem a {
     color: inherit;
     text-decoration: none;
     cursor: pointer;

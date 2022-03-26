@@ -1,0 +1,38 @@
+.segment {
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.title {
+    color: #e5e5e5;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.icon {
+    margin-left: 0.3rem;
+}
+
+.row {
+    display: flex;
+}
+
+.row img {
+    margin-right: 0.5rem;
+    border-radius: 3px;
+    width: 14rem;
+}
+
+.button {
+    display: none;
+    height: 125px;
+    position: absolute;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+}
+.row:hover .button {
+    display: block;
+}
