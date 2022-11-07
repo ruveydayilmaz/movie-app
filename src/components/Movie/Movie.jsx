@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import styles from './Movie.module.css';
 import bookmark from '../../assets/bookmark.png';
 import info from '../../assets/info.png';
 import star from '../../assets/star.png';
 
-const Movie = ({adult, original_language, title, overview, poster_path, release_date, vote_average, vote_count}) => {
+const Movie = ({id, adult, original_language, title, overview, poster_path, release_date, vote_average, vote_count}) => {
 
     const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
@@ -25,7 +26,9 @@ const Movie = ({adult, original_language, title, overview, poster_path, release_
                             <img className={styles.button__icon} src={bookmark} alt="bookmark" />
                         </button>
                         <button>
-                            <img className={styles.button__icon} src={info} alt="info" />
+                            <Link to={`/movies/${id}`}>
+                                <img className={styles.button__icon} src={info} alt="info" />
+                            </Link>
                         </button>
                     </div>
                 </div>

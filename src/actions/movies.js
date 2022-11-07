@@ -13,3 +13,16 @@ export const fetchMovies = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const fetchSingleMovie = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.fetchSingleMovie(id);
+    dispatch({
+      type: types.FETCH_SINGLE_MOVIE,
+      payload: data,
+    });
+  } catch (error) {
+    alert("Couldn't fetch movie");
+    console.log(error.message);
+  }
+};
