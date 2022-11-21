@@ -24,21 +24,21 @@ const Movie = () => {
             <div className={styles.movie}>
                 <img className={styles.movie__poster} src={imageUrl} alt="movie poster" />
                 <div className={styles.movie__info}>
-                    <p className={currentMovie?.adult && styles.adult__warning}>{currentMovie?.adult && "Adult"}</p>
-                    <p className={styles.movie__language}>{currentMovie?.original_language}</p>
                     <p className={styles.movie__date}>{currentMovie?.release_date}</p>
                     <h2 className={styles.movie__title}>{currentMovie?.title}</h2>
-                    {
-                        currentMovie?.genres?.map((genre) => (
-                            <p className={styles.movie__genre} key={genre.id}>{genre.name}</p>
-                        ))
-                    }
-                    <p className={styles.movie__overview}>{currentMovie?.overview}</p>
-                    <div className={styles.movie__actions}>
+                    <div className={styles.movie__genres}>
                         <div className={styles.movie__rating}>
                             <img className={styles.button__icon} src={star} alt="star" />
                             <p className={styles.movie__rating__value}>{currentMovie?.vote_average}</p>
                         </div>
+                        {
+                            currentMovie?.genres?.map((genre) => (
+                                <p className={styles.movie__genre} key={genre.id}>{genre.name}</p>
+                            ))
+                        }                        
+                    </div>
+                    <p className={styles.movie__overview}>{currentMovie?.overview}</p>
+                    <div className={styles.movie__actions}>
                         <div className={styles.buttons}>
                             <button className={styles.button}>
                                 Watch Trailer
