@@ -14,7 +14,7 @@ const MoviesList = () => {
 
     return (
         <div className={styles.movies}>
-            { movies.results.map((movie) => (
+            { movies?.results?.map((movie) => (
                 <Movie key={movie.id} id={movie.id} {...movie}/>
             ))}
         </div>
