@@ -25,6 +25,7 @@
 .episode__list {
   list-style: none;
   padding-left: 6rem;
+  cursor: pointer;
 }
 
 .episode__list li {
