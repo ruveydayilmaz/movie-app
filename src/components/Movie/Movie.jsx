@@ -11,9 +11,11 @@ const Movie = ({id, adult, original_language, title, overview, poster_path, rele
             <div className={styles.movie}>
                 <img className={styles.movie__poster} src={imageUrl} alt="movie poster" />
                 <div className={styles.movie__info}>
-                    <p className={adult && styles.adult__warning}>{adult && "Adult"}</p>
-                    <p className={styles.movie__language}>{original_language}</p>
-                    <h2 className={styles.movie__title}>{title}</h2>
+                    {/* <p className={adult && styles.adult__warning}>{adult && "Adult"}</p> */}
+                    {/* <p className={styles.movie__language}>{original_language}</p> */}
+                    <div className={styles.title__container}>
+                        <h2 className={styles.movie__title}>{title}</h2>
+                    </div>    
                 </div>
             </div>
         </Link>
