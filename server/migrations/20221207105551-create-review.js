@@ -1,16 +1,17 @@
 'use strict';
+const { v4: uuidv4 } = require('uuid');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Ratings', {
+    await queryInterface.createTable('Reviews', {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4
+        type: Sequelize.STRING,
+        defaultValue: uuidv4()
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       movieId: {
         type: Sequelize.INTEGER
@@ -21,6 +22,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Ratings');
+    await queryInterface.dropTable('Reviews');
   }
 };
