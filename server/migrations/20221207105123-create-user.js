@@ -7,8 +7,8 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.STRING,
-        defaultValue: uuidv4(),
+        autoIncrement: true,
+        type: Sequelize.INTEGER
       },
       username: {
         type: Sequelize.STRING
