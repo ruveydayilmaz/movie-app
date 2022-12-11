@@ -1,11 +1,16 @@
 const models = require('../models');
 const {sendConfirmationEmail} = require('../helpers/mailer');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
+    let message = '';
+
     const { email, password, birthday, profilePic, username } = req.body;
 
     try {
+
+        message = "Could not fetch user information"
         const oldUser = await models.User.findOne({where: {email}});
         const oldUsername = await models.User.findOne({where: {username}});
 
@@ -27,6 +32,7 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12);
 
+        message = "Could not create user"
         const user = await models.User.create({
             email: email,
             password: hashedPassword,
@@ -35,27 +41,31 @@ const register = async (req, res) => {
             username: username
         });
 
+        message = "Could not send confirmation email"
         await sendConfirmationEmail({toUser: email, hash: user.id});
 
-        res.status(201).json({
+        return res.status(201).json({
             success: true,
             data: user,
             message: 'Please check your email to activate your account.'
         });
     } catch (error) {
         console.log(error)
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
-            data: error,
-            message: 'Error encountered while registering user'
+            data: null,
+            message: message
         });
     }
 }
 
 const login = async (req, res) => {
+    let message = '';
+
     const { email, password } = req.body;
 
     try {
+        message = "Could not fetch user information"
         const user = await models.User.findOne({where: {email}});
 
         if(!user) {
@@ -66,7 +76,8 @@ const login = async (req, res) => {
             });
         }
 
-        const isMatch = await bcrypt.compare(password, user.hashedPassword);
+        message = "Could not compare passwords"
+        const isMatch = await bcrypt.compare(password, user.password);
 
         if(!isMatch) {
             return res.status(401).json({
@@ -84,10 +95,11 @@ const login = async (req, res) => {
             });
         }
 
+        message = "Could not generate token"
         const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '1d'});
         const refreshToken = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '7d'});
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             data: {
                 token,
@@ -97,19 +109,23 @@ const login = async (req, res) => {
             message: 'User logged in successfully'
         });
     } catch (error) {
-        res.status(500).json({
+        console.log(error)
+        return res.status(500).json({
             success: false,
-            data: error.message,
-            message: 'Error encountered while logging in user'
+            data: null,
+            message: message
         });
     }
 }
 
 const activate = async (req, res) => {
+    let message = '';
+
     const { hash } = req.params;
 
     try {
-        const confirmationHash = await models.User.findOne({where: {id: hash}});
+        message = "Could not fetch user information"
+        await models.User.findOne({where: {id: hash}});
 
         if(!hash) {
             return res.status(404).json({
@@ -119,18 +135,45 @@ const activate = async (req, res) => {
             });
         }
 
+        message = "Could not activate user"
         await models.User.update({confirmed: true}, {where: {id: hash}});
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             data: null,
             message: 'Account activated successfully'
         });
     } catch (error) {
-        res.status(500).json({
+        console.log(error)
+        return res.status(500).json({
             success: false,
-            data: error.message,
-            message: 'Error encountered while activating user'
+            data: null,
+            message: message
+        });
+    }
+}
+
+const findByToken = async (token) => {
+    let message = '';
+
+    try {
+        message = "Could not fetch user information"
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        message = "Could not find user"
+        const user = await models.User.findOne({where: {id: decoded.id}});
+        
+        if(!user) {
+            return null;
+        }
+        
+        return user;
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            success: false,
+            data: null,
+            message: message
         });
     }
 }
@@ -138,5 +181,6 @@ const activate = async (req, res) => {
 module.exports = {
     register,
     login,
-    activate
+    activate,
+    findByToken
 };
