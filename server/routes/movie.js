@@ -6,7 +6,7 @@ const schema = require('../validations/movie');
 
 router.post('/bookmarks', validate(schema.bookmarkMovieValidation), controller.bookmarkMovie);
 router.delete('/bookmarks', validate(schema.removeBookmarkValidation), controller.removeBookmark);
-router.get('/bookmarks/:userId', controller.getBookmarks);
+router.get('/bookmarks/', controller.getBookmarks);
 router.post('/reviews', validate(schema.reviewMovieValidation), controller.reviewMovie);
 router.get('/reviews/:movieId', controller.getReviews);
 

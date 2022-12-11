@@ -1,12 +1,12 @@
 const models = require('../models');
 
 const bookmarkMovie = async (req, res) => {
-    const { userId, movieId } = req.body;
+    const { movieId } = req.body;
     
     try {
         const bookmark = await models.Bookmark.create({
-            userId,
-            movieId
+            userId: req.user?.id,
+            movieId: movieId
         });
 
         res.status(201).json({ 
@@ -24,13 +24,13 @@ const bookmarkMovie = async (req, res) => {
 }
 
 const removeBookmark = async (req, res) => {
-    const { userId, movieId } = req.body;
+    const {  movieId } = req.body;
 
     try {
         const bookmark = await models.Bookmark.destroy({
             where: {
-                userId,
-                movieId
+                userId: req.user?.id,
+                movieId: movieId
             }
         });
 
@@ -50,12 +50,11 @@ const removeBookmark = async (req, res) => {
 }
 
 const getBookmarks = async (req, res) => {
-    const { userId } = req.params;
 
     try {
         const bookmarks = await models.Bookmark.findAll({
             where: {
-                userId
+                userId: req.user?.id
             },
             attributes: ['movieId']
         });
@@ -75,13 +74,13 @@ const getBookmarks = async (req, res) => {
 }
 
 const reviewMovie = async (req, res) => {
-    const { userId, movieId, review } = req.body;
+    const { movieId, review } = req.body;
 
     try {
         const movieReview = await models.Review.create({
-            userId,
-            movieId,
-            review
+            userId: req.user?.id,
+            movieId: movieId,
+            review: review
         });
 
         res.status(201).json({ 

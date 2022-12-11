@@ -2,7 +2,9 @@ const router = require('express').Router();
 const movieRouter = require('./movie');
 const userRouter = require('./user');
 
-router.use('/', movieRouter);
+const authenticate = require('../middlewares/authenticate');
+
+router.use('/', authenticate, movieRouter);
 router.use('/', userRouter);
 
 router.use((req, res) => {
