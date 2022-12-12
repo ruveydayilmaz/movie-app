@@ -1,6 +1,6 @@
 
 # Movie App 🎞️  (in progress)
-A movie app.. (currently there's only the client side)
+A movie app..
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
  
@@ -8,6 +8,9 @@ A movie app.. (currently there's only the client side)
 - List movies
 - Filter movies (in progress)
 - List movie details    
+- Register
+- Bookmark a movie
+- Review a movie
 ...
  
 ## Run Locally 🚀 
@@ -20,7 +23,25 @@ Clone the project
 Go to the project directory  
 
 ~~~bash  
-  cd movie-app
+  cd movie-app/client
+~~~
+
+Install dependencies  
+
+~~~bash  
+npm install
+~~~
+
+Start the client
+
+~~~bash  
+npm run dev
+~~~  
+
+And
+
+~~~bash  
+  cd movie-app/server
 ~~~
 
 Install dependencies  
@@ -32,7 +53,7 @@ npm install
 Start the server  
 
 ~~~bash  
-npm run dev
+npm start
 ~~~  
  
 ## Tech Stack  
