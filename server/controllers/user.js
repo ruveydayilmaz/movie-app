@@ -1,7 +1,10 @@
 const models = require('../models');
-const {sendConfirmationEmail} = require('../helpers/mailer');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
+const {uploadPicture} = require('../helpers/uploader');
+const {sendConfirmationEmail} = require('../helpers/mailer');
+
 
 const register = async (req, res) => {
     let message = '';
@@ -32,12 +35,16 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12);
 
+        message = "Could not upload profile picture"
+        const bufferedProfilePic = Buffer.from(profilePic.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+        const profilePicUrl = await uploadPicture(bufferedProfilePic);
+
         message = "Could not create user"
         const user = await models.User.create({
             email: email,
             password: hashedPassword,
             birthday: birthday,
-            profilePic: profilePic,
+            profilePic: profilePicUrl,
             username: username
         });
 
