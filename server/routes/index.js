@@ -4,8 +4,8 @@ const userRouter = require('./user');
 
 const authenticate = require('../middlewares/authenticate');
 
-router.use('/', authenticate, movieRouter);
 router.use('/', userRouter);
+router.use('/', authenticate, movieRouter);
 
 router.use((req, res) => {
     res.send("<h1>Nothin' here!</h1>");

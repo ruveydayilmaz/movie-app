@@ -4,7 +4,8 @@ const { findByToken } = require('../controllers/user');
 
 const authenticate = (req, res, next) => {
 
-    const token = req.header('x-auth');
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
 
     let decoded;
 
@@ -15,7 +16,7 @@ const authenticate = (req, res, next) => {
         return res.status(401).send({
             success: false,
             data: null,
-            message: 'Authentication failed because of invalid token'
+            message: 'Please authenticate first'
         });
     }
 
@@ -37,4 +38,4 @@ const authenticate = (req, res, next) => {
     });
 };
 
-module.exports = { authenticate };
+module.exports = authenticate;

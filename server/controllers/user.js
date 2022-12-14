@@ -73,7 +73,10 @@ const login = async (req, res) => {
 
     try {
         message = "Could not fetch user information"
-        const user = await models.User.findOne({where: {email}});
+        const user = await models.User.findOne({
+            where: {email},
+            attributes: ['id', 'email', 'password', 'confirmed']
+        });
 
         if(!user) {
             return res.status(404).json({
@@ -110,8 +113,7 @@ const login = async (req, res) => {
             success: true,
             data: {
                 token,
-                refreshToken,
-                user
+                refreshToken
             },
             message: 'User logged in successfully'
         });

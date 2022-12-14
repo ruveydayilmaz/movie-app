@@ -13,7 +13,7 @@ const removeBookmarkValidation = Joi.object({
 const reviewMovieValidation = Joi.object({
     userId: Joi.number().required(),
     movieId: Joi.number().required(),
-    review: Joi.string().required().boolean()
+    review: Joi.boolean().required(),
 });
 
 module.exports = {
