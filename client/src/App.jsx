@@ -3,6 +3,7 @@ import './App.css';
 import MainPage from "./pages/MainPage";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
+import Auth from "./components/Auth";
 
 function App() {
 
@@ -20,6 +21,11 @@ function App() {
         path="/movies/:id"
         element={<MovieDetails/>}
       />
+      <Route
+        path="/auth"
+        element={<Auth/>}
+      >
+      </Route>
       <Route
         path="*"
         element={
