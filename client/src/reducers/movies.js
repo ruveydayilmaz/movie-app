@@ -3,6 +3,8 @@ import * as types from "../actions/types";
 const initialState = {
   movies: [],
   currentMovie: null,
+  bookmarks: [],
+  reviews: [],
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -16,6 +18,26 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         currentMovie: action.payload,
+      };
+    case types.FETCH_BOOKMARKS:
+      return {
+        ...state,
+        bookmarks: action.payload,
+      };
+    case types.BOOKMARK_MOVIE:
+      return {
+        ...state,
+        // bookmarks: [...state.bookmarks, { id: action.payload }],
+      };
+    case types.FETCH_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+    case types.REVIEW_MOVIE:
+      return {
+        ...state,
+        reviews: [...state.reviews, action.payload],
       };
     default:
       return {
