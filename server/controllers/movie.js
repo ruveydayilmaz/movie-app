@@ -1,51 +1,54 @@
 const models = require('../models');
 
 const bookmarkMovie = async (req, res) => {
-    const { movieId } = req.body;
+    let message = '';
+
+    const { movieId } = req.params;
     
     try {
-        const bookmark = await models.Bookmark.create({
-            userId: req.user?.id,
-            movieId: movieId
-        });
-
-        res.status(201).json({ 
-            success: true,
-            data: bookmark,
-            message: 'Movie bookmarked successfully'
-         });
-    } catch (error) {
-        res.status(500).json({ 
-            success: false,
-            data: error.message,
-            message: 'Error encountered while bookmarking movie'
-         });
-    }
-}
-
-const removeBookmark = async (req, res) => {
-    const {  movieId } = req.body;
-
-    try {
-        const bookmark = await models.Bookmark.destroy({
+        message = "Could not get movie"
+        const isBookmarked = await models.Bookmark.findOne({
             where: {
                 userId: req.user?.id,
                 movieId: movieId
             }
         });
 
-        res.status(200).json({
-            success: true,
-            data: bookmark,
-            message: 'Bookmark removed successfully'
-        });
+        if (isBookmarked) {
+            message = "Could not remove bookmark"
+            const bookmark = await models.Bookmark.destroy({
+                where: {
+                    userId: req.user?.id,
+                    movieId: movieId
+                }
+            });
+
+            res.status(200).json({
+                success: true,
+                data: bookmark,
+                message: 'Bookmark removed successfully'
+            });
+            
+        } else {
+            message = "Could not bookmark movie"
+            const bookmark = await models.Bookmark.create({
+                userId: req.user?.id,
+                movieId: movieId
+            });
+
+            res.status(200).json({ 
+                success: true,
+                data: bookmark,
+                message: 'Movie bookmarked successfully'
+             });
+        }
 
     } catch (error) {
-        res.status(500).json({
+        res.status(500).json({ 
             success: false,
-            data: error.message,
-            message: 'Error encountered while removing bookmark'
-        });
+            data: null,
+            message: message
+         });
     }
 }
 
@@ -123,7 +126,6 @@ const getReviews = async (req, res) => {
 
 module.exports = {
     bookmarkMovie,
-    removeBookmark,
     getBookmarks,
     reviewMovie,
     getReviews

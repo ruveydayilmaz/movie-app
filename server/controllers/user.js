@@ -74,8 +74,7 @@ const login = async (req, res) => {
     try {
         message = "Could not fetch user information"
         const user = await models.User.findOne({
-            where: {email},
-            attributes: ['id', 'email', 'password', 'confirmed']
+            where: {email}
         });
 
         if(!user) {
@@ -112,6 +111,7 @@ const login = async (req, res) => {
         return res.status(200).json({
             success: true,
             data: {
+                user,
                 token,
                 refreshToken
             },
