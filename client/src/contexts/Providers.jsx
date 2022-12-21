@@ -4,7 +4,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const Providers = ({children}) => (
     <Provider store={store}>
-        <GoogleOAuthProvider clientId={import.meta.env.VITE_APP_API_URL}>
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_APP_OAUTH_KEY}>
             {children}
         </GoogleOAuthProvider>        
     </Provider>

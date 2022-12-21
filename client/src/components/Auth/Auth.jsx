@@ -6,6 +6,7 @@ import * as yup from "yup";
 import styles from './Auth.module.css';
 import { login, signin } from '../../actions/auth';
 import * as types from '../../actions/types';
+import Oauth from '../OAuth/Oauth';
 
 const initialState = {
     username: "",
@@ -18,7 +19,7 @@ const initialState = {
 const validationSchema = yup.object().shape({
     username: yup.string().required("Username is required"),
     email: yup.string().email("Email is invalid").required("Email is required"),
-    password: yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+    password: yup.string().required("Password is required"),
     confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords must match"),
     profilePic: yup.string(),
 });
@@ -26,7 +27,7 @@ const validationSchema = yup.object().shape({
 const Auth = () => {
 
     const [form, setForm] = useState(initialState);
-    const [isSignup, setIsSignup] = useState(true);
+    const [isSignup, setIsSignup] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const dispatch = useDispatch();
@@ -79,7 +80,7 @@ const Auth = () => {
                 <div className={styles.auth__item}>
                     <label className={styles.auth__label} htmlFor="password">Password</label>
                     <input className={styles.auth__input} type={showPassword? "text" : "password"} name="password" id="password" {...register("password")} />
-                    <i className={styles.auth__icon} onClick={handleShowPassword}> {showPassword ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}</i>
+                    <i className={styles.auth__icon} onClick={handleShowPassword}> {!showPassword ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}</i>
                     <p className={styles.invalid}>{errors.password?.message}</p>
                 </div>
                 {
@@ -102,7 +103,15 @@ const Auth = () => {
                 </div>
             </form>
             <div className={styles.auth__item}>
-                <button onClick={switchMode} className={styles.switch__button}>Don't have an account? Register</button>
+                <button onClick={switchMode} className={styles.switch__button}>
+                    {
+                        isSignup ? "Already have an account? Sign In"
+                        : "Don't have an account? Sign Up"
+                    }
+                </button>
+            </div>
+            <div className={styles.auth__item}>
+                <Oauth />
             </div>
         </div>
     )

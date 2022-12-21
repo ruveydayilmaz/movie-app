@@ -53,8 +53,85 @@ const register = async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            data: user,
+            data: {user},
             message: 'Please check your email to activate your account.'
+        });
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            success: false,
+            data: null,
+            message: message
+        });
+    }
+}
+
+const googleLogin = async (req, res) => {
+    let message = '';
+
+    const { email, password, profilePic, username } = req.body;
+
+    try {
+
+        message = "Could not fetch user information"
+        const oldUser = await models.User.findOne({where: {email}});
+        const oldUsername = await models.User.findOne({where: {username}});
+        var profilePicUrl;
+
+        if(oldUser) {
+            message = "Could not generate token"
+            const token = jwt.sign({id: oldUser.id}, process.env.JWT_SECRET, {expiresIn: '1d'});
+            const refreshToken = jwt.sign({id: oldUser.id}, process.env.JWT_SECRET, {expiresIn: '7d'});
+            return res.status(200).json({
+                success: true,
+                data: {
+                    user: oldUser,
+                    token,
+                    refreshToken
+                },
+                message: 'User logged in'
+            });
+        }
+
+        if(oldUsername) {
+            return res.status(409).json({
+                success: false,
+                data: null,
+                message: 'Username already exists'
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        message = "Could not upload profile picture"
+
+        if (profilePic.startsWith('http')) {
+            profilePicUrl = profilePic;
+        } else if (profilePic.startsWith('data:image')) {
+            const bufferedProfilePic = Buffer.from(profilePic.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+            profilePicUrl = await uploadPicture(bufferedProfilePic);
+        }
+
+        message = "Could not create user"
+        const user = await models.User.create({
+            email: email,
+            password: hashedPassword,
+            profilePic: profilePicUrl,
+            username: username,
+            confirmed: true
+        });
+
+        message = "Could not generate token"
+        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '1d'});
+        const refreshToken = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '7d'});
+        return res.status(201).json({
+            success: true,
+            data: {
+                user,
+                token,
+                refreshToken
+            },
+            message: 'User created'
         });
     } catch (error) {
         console.log(error)
@@ -190,6 +267,7 @@ const findByToken = async (token) => {
 module.exports = {
     register,
     login,
+    googleLogin,
     activate,
     findByToken
 };

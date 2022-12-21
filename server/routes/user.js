@@ -6,6 +6,7 @@ const schema = require('../validations/user');
 
 router.post('/register', validate(schema.registerValidation), controller.register);
 router.post('/login', validate(schema.loginValidation), controller.login);
+router.post('/google-login', validate(schema.registerValidation), controller.googleLogin);
 router.get('/confirm/:hash', controller.activate);
 
 module.exports = router;

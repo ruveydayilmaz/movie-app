@@ -13,4 +13,6 @@ axios.interceptors.request.use((req) => {
 
 export const login = (formData) => API.post(`/login`, formData);
 
+export const googleLogin = (formData) => API.post(`/google-login`, formData);
+
 export const register = (formData) => API.post(`/register`, formData);
