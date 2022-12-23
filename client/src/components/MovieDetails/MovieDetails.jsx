@@ -2,11 +2,12 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styles from './MovieDetails.module.css';
-import bookmark from '../../assets/bookmark.png';
+import bookmarkIcon from '../../assets/bookmark.png';
 import star from '../../assets/star.png';
 import { fetchSingleMovie } from '../../actions/movies';
 import Navigation from '../Navigation/Navigation';
 import EpidodeList from '../EpisodeList';
+import { bookmarkMovie } from '../../actions/movies';
 
 const Movie = () => {
     const { id } = useParams();
@@ -17,12 +18,16 @@ const Movie = () => {
         dispatch(fetchSingleMovie(id));
     }, [dispatch, id]);
 
+    const bookmark = () => {
+        dispatch(bookmarkMovie(id))
+    }
+
     const imageUrl = `https://image.tmdb.org/t/p/w500${currentMovie?.backdrop_path}`;
 
     return (
         <>
             <Navigation/>
-                <div className={styles.movie__details}>
+            <div className={styles.movie__details}>
                 <div className={styles.movie}>
                     <div className={styles.movie__info}>
                         <h2 className={styles.movie__title}>{currentMovie?.title}</h2>
@@ -46,8 +51,8 @@ const Movie = () => {
                                 <button className={styles.button}>
                                     Watch Now
                                 </button>
-                                <button>
-                                    <img className={styles.button__icon} src={bookmark} alt="bookmark" />
+                                <button onClick={bookmark}>
+                                    <img className={styles.button__icon} src={bookmarkIcon} alt="bookmark" />
                                 </button>
                             </div>
                         </div>
@@ -56,7 +61,6 @@ const Movie = () => {
                 <EpidodeList imageUrl={imageUrl}/>
             </div>
         </>
-
     )
 }
 

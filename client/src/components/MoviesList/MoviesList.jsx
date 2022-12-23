@@ -9,7 +9,7 @@ const MoviesList = () => {
     const movies = useSelector((state) => state.movies.movies);
 
     useEffect (() => {
-        console.log(movies);
+        // console.log(movies);
     }, [movies]);
 
     return (
