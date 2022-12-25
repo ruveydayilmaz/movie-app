@@ -8,6 +8,12 @@ export const REMOVE_BOOKMARK = "REMOVE_BOOKMARK";
 export const BOOKMARK_MOVIE = "BOOKMARK_MOVIE";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
 export const REVIEW_MOVIE = "REVIEW_MOVIE";
+export const FETCH_MOVIE_VIDEOS = "FETCH_MOVIE_VIDEOS";
+
+// shows types
+export const FETCH_SHOWS = "FETCH_SHOWS";
+export const FETCH_SINGLE_SHOW = "FETCH_SINGLE_SHOW";
+export const FETCH_SHOW_VIDEOS = "FETCH_SHOW_VIDEOS";
 
 // auth types
 export const AUTH = "AUTH";

@@ -14,6 +14,8 @@
 .movie__poster {
     position: absolute;
     width: 110%;
+    height: 100vh;
+    object-fit: cover;
     top: -35px;
     left: 5px;
     z-index: -100;
@@ -24,7 +26,6 @@
 
 .episode__list {
   list-style: none;
-  padding-left: 6rem;
   cursor: pointer;
 }
 
@@ -35,7 +36,6 @@
   align-items: flex-start;
   padding: 1rem;
   border-bottom: 1px solid rgba(39, 38, 38, 0.411);
-  height: 4rem;
 }
 
 .episode__list li p {
@@ -43,9 +43,9 @@
     font-size: 13px;
 }
 
-.episode__list li:hover {
+/* .episode__list li:hover {
   background-color: rgba(71, 68, 68, 0.411);
-}
+} */
 
 .episode__list li a {
   color: #fff;

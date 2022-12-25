@@ -3,6 +3,8 @@ import './App.css';
 import MainPage from "./pages/MainPage";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
+import ShowPage from "./pages/ShowPage/ShowPage";
+import ShowDetails from "./components/ShowDetails/ShowDetails";
 import Auth from "./components/Auth";
 
 function App() {
@@ -20,6 +22,14 @@ function App() {
       <Route
         path="/movies/:id"
         element={<MovieDetails/>}
+      />
+      <Route
+        path="/shows"
+        element={<ShowPage/>}
+      />
+      <Route
+        path="/shows/:id"
+        element={<ShowDetails/>}
       />
       <Route
         path="/auth"

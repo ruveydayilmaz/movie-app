@@ -11,7 +11,9 @@ const Navigation = () => {
                 {/* <NavLink to="/" className={styles.logo}>
                     <img className={styles.logo} src={logo} alt="logo" />
                 </NavLink> */}
+                <NavLink to="/" className={styles.link}>Main</NavLink>
                 <NavLink to="/movies" className={styles.link}>Movies</NavLink>
+                <NavLink to="/shows" className={styles.link}>Shows</NavLink>
             </div>
             <SecondaryNavigation />
         </div>

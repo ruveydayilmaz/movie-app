@@ -1,28 +1,30 @@
 import styles from "./EpisodeList.module.css";
+import { useSelector } from "react-redux";
 
 const EpidodeList = ({imageUrl}) => {
+    const videos = useSelector((state) => state.shows.videos);
+
+    videos.results = videos.results.slice(0, 2);
 
     return (
         <div className={styles.episodes__container}>
-            <h2>Episodes</h2>
+            <h2>Official Trailers</h2>
             <img className={styles.movie__poster} src={imageUrl} alt="movie poster" />
             <ul className={styles.episode__list}>
-                <li>
-                    <a href="/episodes/1">Episode 1</a>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure, sint!</p>
-                </li>
-                <li>
-                    <a href="/episodes/2">Episode 2</a>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                </li>
-                <li>
-                    <a href="/episodes/3">Episode 3</a>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus.</p>
-                </li>
-                <li>
-                    <a href="/episodes/4">Episode 4</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam.</p>
-                </li>
+                {videos?.results?.map((video) => (
+                    <li key={video.id} className={styles.episode__item}>  
+                        {/* ERROR: blocked by client */}
+                        <iframe
+                            width="420"
+                            height="240"
+                            src={`https://www.youtube.com/embed/${video.key}`}
+                            title={video.name}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </li>
+                ))}
             </ul>
         </div>
     )
