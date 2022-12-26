@@ -1,0 +1,53 @@
+.episodes__container {
+    width: 38rem;
+    position: relative;
+}
+
+.episodes__container h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #fff;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+}
+
+.movie__poster {
+    position: absolute;
+    width: 110%;
+    height: 100vh;
+    object-fit: cover;
+    top: -35px;
+    left: 5px;
+    z-index: -100;
+    opacity: 0.5;
+    filter: blur(3px) brightness(0.5) saturate(0.5);
+    box-shadow: 0 0 100px 40px #141414a2;
+}
+
+.episode__list {
+  list-style: none;
+  cursor: pointer;
+}
+
+.episode__list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(39, 38, 38, 0.411);
+}
+
+.episode__list li p {
+    color: rgba(255, 255, 255, 0.678);
+    font-size: 13px;
+}
+
+/* .episode__list li:hover {
+  background-color: rgba(71, 68, 68, 0.411);
+} */
+
+.episode__list li a {
+  color: #fff;
+  text-decoration: none;
+}

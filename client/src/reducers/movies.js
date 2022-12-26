@@ -4,7 +4,9 @@ const initialState = {
   movies: [],
   currentMovie: null,
   bookmarks: [],
+  isBookmarked: false,
   reviews: [],
+  videos: [],
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -27,7 +29,7 @@ const movieReducer = (state = initialState, action) => {
     case types.BOOKMARK_MOVIE:
       return {
         ...state,
-        // bookmarks: [...state.bookmarks, { id: action.payload }],
+        isBookmarked: !state.isBookmarked,
       };
     case types.FETCH_REVIEWS:
       return {
@@ -38,6 +40,11 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         reviews: [...state.reviews, action.payload],
+      };
+    case types.FETCH_MOVIE_VIDEOS:
+      return {
+        ...state,
+        videos: action.payload,
       };
     default:
       return {
