@@ -1,9 +1,9 @@
 import * as api from "../api/movies";
 import * as types from "./types";
 
-export const fetchMovies = () => async (dispatch) => {
+export const fetchMovies = (page) => async (dispatch) => {
   try {
-    const { data } = await api.fetchMovies();
+    const { data } = await api.fetchMovies(page);
     dispatch({
       type: types.FETCH_MOVIES,
       payload: data,
@@ -86,5 +86,18 @@ export const reviewMovie = (id, review) => async (dispatch) => {
 
     var error = err.response.data.message; 
     dispatch({ type: "AUTH_ERROR", error });
+  }
+};
+
+export const fetchMovieVideos = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.fetchMovieVideos(id);
+    dispatch({
+      type: types.FETCH_MOVIE_VIDEOS,
+      payload: data,
+    });
+  } catch (error) {
+    alert("Couldn't fetch videos");
+    console.log(error.message);
   }
 };

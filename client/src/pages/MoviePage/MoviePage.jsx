@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchMovies } from '../../actions/movies';
 import Filter from '../../components/Filter/Filter';
@@ -9,10 +9,23 @@ import './MoviePage.css';
 
  function MoviePage() {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovies(page));
   }, [dispatch]);
+
+  const handlePageChange = (type) => {
+    if (type === 0 && page > 1) {
+      setPage(page - 1);
+      dispatch(fetchMovies(page - 1));
+      window.scrollTo(0, 0);
+    } else if (type === 1) {
+      setPage(page + 1);
+      dispatch(fetchMovies(page + 1));
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <div>
@@ -22,8 +35,8 @@ import './MoviePage.css';
           <h2 className={styles.title}>Movies</h2>
           <MoviesList />
           <div className="action-buttons">
-              <button>Prev</button>
-              <button>Next</button>
+              <button onClick={() => handlePageChange(0)}>Previous</button>
+              <button onClick={() => handlePageChange(1)}>Next</button>
           </div>        
         </div>
         <div className='right_container'>
