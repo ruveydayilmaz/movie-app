@@ -5,7 +5,7 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 import ShowPage from "./pages/ShowPage/ShowPage";
 import ShowDetails from "./components/ShowDetails/ShowDetails";
-import Auth from "./components/Auth";
+import Auth from "./components/Auth/Auth";
 
 function App() {
 

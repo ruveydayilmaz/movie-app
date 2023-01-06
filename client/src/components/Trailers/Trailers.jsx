@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const Trailers = ({imageUrl}) => {
     const videos = useSelector((state) => state.movies.videos);
 
-    videos.results = videos.results.filter((video) => video.type === "Trailer").slice(0, 2);
+    videos.results = videos?.results?.filter((video) => video.type === "Trailer").slice(0, 2);
 
     return (
         <div className={styles.episodes__container}>

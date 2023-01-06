@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './SecondaryNavigation.module.css';
-import Search from '../Search'
-import Notifications from '../Notifications'
-import UserMenu from '../UserMenu'
+import Search from '../Search/Search'
+import Notifications from '../Notifications/Notifications'
+import UserMenu from '../UserMenu/UserMenu'
 
 const SecondaryNavigation = () => {
 

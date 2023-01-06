@@ -7,7 +7,7 @@ import bookmarkIcon from '../../assets/bookmark.png';
 import star from '../../assets/star.png';
 import { fetchSingleMovie, fetchMovieVideos } from '../../actions/movies';
 import Navigation from '../Navigation/Navigation';
-import Trailers from '../Trailers';
+import Trailers from '../Trailers/Trailers';
 import { bookmarkMovie } from '../../actions/movies';
 
 const Movie = () => {

@@ -5,7 +5,7 @@ import styles from './ShowDetails.module.css';
 import star from '../../assets/star.png';
 import { fetchSingleShow, fetchShowVideos } from '../../actions/shows';
 import Navigation from '../Navigation/Navigation';
-import EpidodeList from '../EpisodeList';
+import EpidodeList from '../EpisodeList/EpisodeList';
 
 const ShowDetails = () => {
     const { id } = useParams();

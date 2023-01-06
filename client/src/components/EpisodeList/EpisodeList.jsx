@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const EpidodeList = ({imageUrl}) => {
     const videos = useSelector((state) => state.shows.videos);
 
-    videos.results = videos.results.slice(0, 2);
+    videos.results = videos?.results?.slice(0, 2);
 
     return (
         <div className={styles.episodes__container}>
