@@ -1,30 +1,29 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Segment.module.css';
 import ChevronRightIcon from './ChevronRightIcon';
-import placeholderImg from './assets/thumbnail-top10-h.jpg';
-import p1 from './assets/p1.jpg';
-import p2 from './assets/p2.webp';
-import p3 from './assets/p3.jpg';
-import p4 from './assets/p4.jpg';           //will update this imports later
-import p5 from './assets/p5.jpg';
-import p6 from './assets/p6.jpg';
-import p7 from './assets/p7.jpg';
+import { fetchSingleMovie } from '../../actions/movies';
 
-const Segment = ({ title }) => {
+const Segment = ({ movie }) => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchSingleMovie(movie.movieId))
+    }, [dispatch, movie])
+
+    const currentMovie = useSelector((state) => state.movies.currentMovie);
+    console.log(currentMovie)
+
+    const poster = currentMovie?.backdrop_path ? `https://image.tmdb.org/t/p/w500${currentMovie?.backdrop_path}` : 'https://www.movienewz.com/img/films/poster-holder.jpg';
 
     return (
         <div className={styles.segment}>
             <p className={styles.title}>
-                {title}
+                {currentMovie?.title}
             </p>
             <div className={styles.row}>
-                <img src={p7} />
-                <img src={p1}/>
-                <img src={p2}/>
-                <img src={p3} />
-                <img src={p4} />
-                <img src={p5} />
-                <img src={p6} />
+                <img src={poster} alt="poster"/>
                 <button className={styles.button}>
                     <ChevronRightIcon />
                 </button>
