@@ -16,3 +16,5 @@ export const fetchReviews = async (id) => await axios.get(`${apiEndpoint}/review
 export const reviewMovie = async (id, review) => await axios.post(`${apiEndpoint}/reviews`, { id, review });
 
 export const fetchMovieVideos = async (id) => await axios.get(`${movieDbEndpoint}/${id}/videos?api_key=${import.meta.env.VITE_DB_API_KEY}`);
+
+export const trending = async () => await axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=${import.meta.env.VITE_DB_API_KEY}`)

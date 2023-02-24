@@ -1,6 +1,41 @@
-.user {
+.user__menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70px;
+}
+
+.user__image {
     width: 30px;
     height: 30px;
     background-color: grey;
-    border-radius: 4px;
+    border-radius: 50%;
+}
+
+.menu__login {
+    background-color: none;
+    background: none;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.menu__login img {
+    width: 30px;
+}
+
+.menu__logout {
+    background-color: none;
+    background: none;
+    width: 23px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.menu__logout img {
+    width: 23px;
 }

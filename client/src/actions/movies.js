@@ -101,3 +101,16 @@ export const fetchMovieVideos = (id) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const trending = () => async (dispatch) => {
+  try {
+    const { data } = await api.trending();
+    dispatch({
+      type: types.TRENDING,
+      payload: data,
+    });
+  } catch (error) {
+    alert("Couldn't fetch trending media");
+    console.log(error.message);
+  }
+};

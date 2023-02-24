@@ -9,6 +9,7 @@ export const BOOKMARK_MOVIE = "BOOKMARK_MOVIE";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
 export const REVIEW_MOVIE = "REVIEW_MOVIE";
 export const FETCH_MOVIE_VIDEOS = "FETCH_MOVIE_VIDEOS";
+export const TRENDING = "TRENDING";
 
 // shows types
 export const FETCH_SHOWS = "FETCH_SHOWS";
