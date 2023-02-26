@@ -15,6 +15,7 @@ export const TRENDING = "TRENDING";
 export const FETCH_SHOWS = "FETCH_SHOWS";
 export const FETCH_SINGLE_SHOW = "FETCH_SINGLE_SHOW";
 export const FETCH_SHOW_VIDEOS = "FETCH_SHOW_VIDEOS";
+export const FETCH_TOP_RATED_SHOWS = "FETCH_TOP_RATED_SHOWS";
 
 // auth types
 export const AUTH = "AUTH";

@@ -6,18 +6,21 @@ import UserMenu from '../UserMenu/UserMenu'
 
 const SecondaryNavigation = () => {
 
+    var profile = JSON.parse(localStorage.getItem('profile'));
+
     return (
-        <div className={styles.secondaryNavigation}>
-            <div className={styles.navItem}>
+        <div className={styles.secondary__navigation}>
+            <div className={styles.nav__item && styles.search__item}>
                 <Search />                
             </div>
-            <div className={styles.navItem}>
-                Kids               
-            </div>
-            <div className={styles.navItem}>
-                <Notifications />                
-            </div>
-            <div className={styles.navItem}>
+            {
+                profile && (
+                    <div className={styles.nav__item}>
+                        <Notifications />                
+                    </div>                    
+                )
+            }
+            <div className={styles.nav__item}>
                 <UserMenu />            
             </div>
         </div>

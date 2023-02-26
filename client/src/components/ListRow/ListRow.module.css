@@ -1,0 +1,24 @@
+.movie__div {
+    overflow: hidden;
+    position: relative;
+    margin-right: 20px;
+    text-align: center;
+    background-color: #12111a;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.movie__title {
+    color: #e5e5e5;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.movie__poster {
+    border-radius: 30px;
+}
+
+.movie__poster img {
+    width: 17rem;
+    border-radius: 5px;
+}

@@ -39,3 +39,16 @@ export const fetchShowVideos = (id) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const fetchTopRatedShows = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchTopRatedShows();
+    dispatch({
+      type: types.FETCH_TOP_RATED_SHOWS,
+      payload: data,
+    });
+  } catch (error) {
+    alert("Couldn't fetch top rated shows");
+    console.log(error.message);
+  }
+};

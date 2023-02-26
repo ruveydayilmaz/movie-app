@@ -1,0 +1,48 @@
+.saved__list {
+    margin: 30px;
+    overflow: hidden;
+}
+
+.saved__title {
+    color: white;
+    font-size: 22px;
+}
+
+.saved__shows {
+    display: flex;
+    transition: transform 0.5s;
+}
+
+.list__container {
+    position: relative;
+    display: flex;
+}
+  
+.left__arrow,
+.right__arrow {
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    font-size: 24px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.096);
+    color: #fff;
+    cursor: pointer;
+    z-index: 500;
+}
+
+.left__arrow {
+    left: 0px;
+    border-radius: 12px 0px 0 12px;
+}
+
+.right__arrow {
+    right: 0px;
+    /* border-radius: 0px 12px 12px 0px; */
+}
+  
+.left__arrow:hover,
+.right__arrow:hover {
+    background-color: rgba(0, 0, 0, 0.425);
+}
+  

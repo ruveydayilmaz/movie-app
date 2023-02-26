@@ -1,3 +1,25 @@
-.search {
+.search__bar {
+    width: 200px;
+    background-color: #352b428a;
+    padding: 5px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
 
+.search__input {
+    background: none;
+    border: none;
+    color: white
+}
+
+*:focus {
+    outline: none;
+}
+
+.search__icon {
+    width: 22px;
+    position: absolute;
+    margin-left: 3px;
 }

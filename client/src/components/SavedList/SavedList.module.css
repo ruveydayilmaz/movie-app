@@ -1,0 +1,13 @@
+.saved__list {
+    margin: 30px;
+    margin-top: 300px; /* will update it later */
+}
+
+.saved__title {
+    color: white;
+    font-size: 22px;
+}
+
+.saved__shows {
+    display: flex;
+}

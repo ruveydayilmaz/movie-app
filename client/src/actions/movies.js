@@ -27,13 +27,23 @@ export const fetchSingleMovie = (id) => async (dispatch) => {
   }
 };
 
-export const fetchBookmarks = () => async (dispatch) => {
+export const fetchBookmarks = (setBookmarks) => async (dispatch) => {
   try {
     const { data } = await api.fetchBookmarks();
+
     dispatch({
       type: types.FETCH_BOOKMARKS,
       payload: data,
     });
+
+    const bookmarks = await Promise.all(
+      data.data.map(async (item) => {
+        const { data } = await api.fetchSingleMovie(item.movieId);
+        return data;
+      })
+    );
+
+    setBookmarks(bookmarks);
   } catch (err) {
     console.log(err.response.data.message);
 

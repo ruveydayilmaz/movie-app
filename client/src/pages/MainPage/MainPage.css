@@ -1,0 +1,41 @@
+.fade {
+    background-image: linear-gradient(
+        to bottom,
+        #12111a0e 0,
+        #12111a3a 15%,
+        #12111a83 29%,
+        #12111a91 44%,
+        #12111ade 72%,
+        #12111a 100%
+    );
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 12vw;
+    top: auto;
+    bottom: -130px;
+    background-size: 100% 100%;
+    background-position: 0 top;
+    background-repeat: repeat-x;
+}
+
+.fade__out {
+    background-image: linear-gradient(
+        to top,
+        #12111a0e 0,
+        #12111a3a 15%,
+        #12111a83 29%,
+        #12111a91 44%,
+        #12111ade 72%,
+        #12111a 100%
+    );
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 12vw;
+    top: 880px;
+    background-size: 100% 100%;
+    background-position: 0 top;
+    background-repeat: repeat-x;
+    z-index: -1;
+}

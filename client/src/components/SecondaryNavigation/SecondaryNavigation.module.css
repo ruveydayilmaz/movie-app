@@ -1,9 +1,13 @@
-.secondaryNavigation {
+.secondary__navigation {
     display: flex;
     align-items: center;
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
-.navItem {
-    margin-left: 1.8rem;
+.nav__item {
+    margin-left: 0.7rem;
+}
+
+.search__item {
+    margin-right: 2rem;
 }
