@@ -1,8 +1,15 @@
 require('dotenv').config();
 const express = require('express');
+const http = require('http');
+
 const routes = require('./routes');
+const socket = require('./utils/socket');
 
 const app = express();
+
+const server = http.createServer(app);
+
+socket(server);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -21,6 +28,6 @@ app.use(routes);
 
 const port = process.env.PORT || 5001;
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
