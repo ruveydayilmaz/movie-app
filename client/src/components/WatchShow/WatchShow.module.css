@@ -1,0 +1,122 @@
+.watch__div {
+    height: 100vh;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.video__controllers {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.video__controllers button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    margin: 5px;
+    background-color: #1f1c2486;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video__controllers button:hover {
+    background-color: #1f1c24;
+    color: white;
+    cursor: pointer;
+}
+
+.video__controllers img {
+    width: 40px;
+}
+
+.users__div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #1f1c24;
+    height: 100%;
+    width: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.users__div ul {
+    list-style: none;
+}
+
+.users__item {
+    display: flex;
+    align-items: center;
+}
+
+.users__item p {
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.users__item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat__div {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background-color: #1f1c24;
+    height: 100%;
+    width: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat__div ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+.chat__div li {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.chat__div li img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+}
+
+.chat__username {
+    font-size: 12px;
+}
+
+.chat__message {
+    font-size: 16px;
+    width: 230px;
+    word-break: break-all;
+}
+
+.chat__form {
+    position: fixed;
+    bottom: 30px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

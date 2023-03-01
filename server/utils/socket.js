@@ -65,14 +65,33 @@ const socket = (server) => {
     socket.on("send-message", (data) => {
       const { receiverId } = data;
       const user = activeUsers.find((user) => user.userId === receiverId);
-      // console.log("Sending from socket to :", receiverId)
-      data.status = "sent"
+
       // console.log("Data: ", data)
       if (user) {
         io.to(user.socketId).emit("recieve-message", data);
       }
   
     });
+
+    // Join a room when requested by the client
+    socket.on('join', (roomId) => {
+      socket.join(roomId);
+      console.log(`Client ${socket.id} joined room ${roomId}`);
+    });
+
+    // Leave a room when requested by the client
+    socket.on('leave', (roomId) => {
+      socket.leave(roomId);
+      console.log(`Client ${socket.id} left room ${roomId}`);
+    });
+
+    // Send a message to all clients in a room
+    socket.on('send-to-room', (roomId, data) => {
+      console.log(`Sending message '${data.message}' to room ${roomId}`);
+      io.in(roomId).emit('message', data);
+    });
+
+
   });
 }
 

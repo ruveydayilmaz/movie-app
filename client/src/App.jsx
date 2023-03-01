@@ -20,8 +20,8 @@ function App() {
   }, [])
 
   useEffect(() => {
-    socket?.emit("new-user-add", profile.user)
-  }, [socket, profile.user])
+    if(profile?.user) socket?.emit("new-user-add", profile?.user)
+  }, [socket, profile?.user])
 
   return (
     <Routes>

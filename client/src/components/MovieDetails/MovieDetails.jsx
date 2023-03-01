@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import styles from './MovieDetails.module.css';
@@ -24,7 +24,7 @@ const Movie = () => {
     const bookmark = () => {
         dispatch(bookmarkMovie(id))
     }
-    const imageUrl = `https://image.tmdb.org/t/p/w500${currentMovie?.poster_path}`;
+    const imageUrl = `https://image.tmdb.org/t/p/original${currentMovie?.poster_path}`;
 
     return (
         <>
@@ -51,9 +51,11 @@ const Movie = () => {
                                 <button className={styles.button}>
                                     Watch Trailer
                                 </button>
-                                <button className={styles.button}>
-                                    Watch Now
-                                </button>
+                                <Link to={`/movies/watch/${id}`}>
+                                    <button className={styles.button}>
+                                        Watch Now
+                                    </button>                                    
+                                </Link>
                                 <button onClick={bookmark}>
                                     <img className={styles.button__icon} src={bookmarkIcon} alt="bookmark" />
                                 </button>
