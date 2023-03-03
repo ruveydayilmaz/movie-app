@@ -30,7 +30,7 @@ const TrendingList = () => {
                 <button className={styles.left__arrow} onClick={handleLeftArrowClick}>{'<'}</button>
                 <button className={styles.right__arrow} onClick={handleRightArrowClick}>{'>'}</button>
                 <div className={styles.saved__shows} style={{ transform: `translateX(-${currentIndex * 20}%)` }}>
-                    {trending?.results.length > 0 &&  trending?.results?.map(movie => (
+                    {trending?.results?.length > 0 &&  trending?.results?.map(movie => (
                         <TrendingShows movie = {movie} />    
                     ))}            
                 </div>

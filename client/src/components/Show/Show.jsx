@@ -4,7 +4,7 @@ import styles from './Show.module.css';
 
 const Show = ({id, name, overview, poster_path, release_date, vote_average, vote_count}) => {
 
-    const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+    const imageUrl = `https://image.tmdb.org/t/p/original${poster_path}`;
 
     return (
         <Link className={styles.show__link} to={`/shows/${id}`}>

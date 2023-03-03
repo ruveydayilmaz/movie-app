@@ -6,7 +6,7 @@ import styles from './ListRow.module.css';
 const TopRatedShows = ({ show }) => {
 
     const poster = `https://image.tmdb.org/t/p/original${show?.backdrop_path}`;
-    const link = show.media_type === 'tv' ? `/shows/${show.id}` : `/shows/${show.id}`
+    const link = show?.media_type === 'tv' ? `/shows/${show?.id}` : `/shows/${show?.id}`
 
     return (
         <Link to={link}>

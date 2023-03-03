@@ -17,7 +17,7 @@ const ShowDetails = () => {
         dispatch(fetchShowVideos(id));
     }, [dispatch, id]);
 
-    const imageUrl = `https://image.tmdb.org/t/p/w500${currentShow?.poster_path}`;
+    const imageUrl = `https://image.tmdb.org/t/p/original${currentShow?.poster_path}`;
 
     return (
         <>

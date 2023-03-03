@@ -30,8 +30,8 @@ const TopRatedShowsList = () => {
                 <button className={styles.left__arrow} onClick={handleLeftArrowClick}>{'<'}</button>
                 <button className={styles.right__arrow} onClick={handleRightArrowClick}>{'>'}</button>
                 <div className={styles.saved__shows} style={{ transform: `translateX(-${currentIndex * 20}%)` }}>
-                    {shows?.results.length > 0 &&  shows?.results?.map(show => (
-                        <TopRatedShows show={show} />    
+                    {shows?.results?.length > 0 &&  shows?.results?.map(show => (
+                        <TopRatedShows key={show.id} show={show} />    
                     ))}            
                 </div>
             </div>
