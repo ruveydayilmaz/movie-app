@@ -31,15 +31,15 @@ import './MoviePage.css';
     <div>
       <Navigation />
       <div className='container'>
-        <div className='left_container'>
+        <div className='left__container'>
           <h2 className={styles.title}>Movies</h2>
           <MoviesList />
-          <div className="action-buttons">
-              <button onClick={() => handlePageChange(0)}>Previous</button>
+          <div className='action__buttons'>
+              <button className={page === 1 && "button__disabled"} onClick={() => handlePageChange(0)}>Previous</button>
               <button onClick={() => handlePageChange(1)}>Next</button>
           </div>        
         </div>
-        <div className='right_container'>
+        <div className='right__container'>
           <Filter/>
         </div>
       </div>

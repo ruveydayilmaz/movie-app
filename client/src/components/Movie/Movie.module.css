@@ -1,6 +1,7 @@
 .movie__link {
     text-decoration: none;
     color: #fff;
+    text-transform: uppercase;
 }
 
 .movie {
@@ -64,13 +65,18 @@
     box-shadow: 0 0 0.4rem rgba(119, 8, 8, 0.767);
 }
 
+.title__container__hidden {
+    display: none;
+}
+
 .title__container {
     width: 200px;
-    height: 50px;
+    height: 300px;
     background-color: rgba(0, 0, 0, 0.582);   
     box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.541);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .movie__title {

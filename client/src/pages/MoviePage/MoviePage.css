@@ -2,3 +2,42 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
 }
+
+.left__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.action__buttons {
+  width: 210px;
+  margin-top: 28px;
+  margin-bottom: 28px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.action__buttons button {
+  font-size: 15px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.action__buttons button:hover {
+  background-color: #6c5ecf;
+  color: white;
+}
+
+.button__disabled {
+  background-color: #302d46ce;
+  color: rgb(190, 190, 190);
+}
+
+.button__disabled:hover {
+  background-color: #232133ce;
+  color: rgb(190, 190, 190);
+}
